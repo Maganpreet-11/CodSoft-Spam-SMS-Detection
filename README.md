@@ -1,184 +1,100 @@
 # 📧 Spam SMS Detection using Machine Learning
 
-## 📖 Overview
+## 📌 Project Overview
 
-Spam SMS messages are a major issue in digital communication, often containing advertisements, phishing attempts, fraudulent offers, and malicious links. Detecting such messages automatically can help users avoid scams and improve communication security.
+Spam SMS Detection is a Machine Learning project developed as part of the **CodSoft Machine Learning Internship**. The goal of this project is to classify SMS messages as either **Spam** or **Ham (Legitimate)** using Natural Language Processing (NLP) and Machine Learning techniques.
 
-This project develops a Machine Learning-based Spam SMS Detection System capable of classifying SMS messages as either:
-
-- **Spam** – Unwanted or fraudulent messages
-- **Ham** – Legitimate messages
-
-The project uses **Natural Language Processing (NLP)** techniques and **Machine Learning algorithms** to analyze text messages and make accurate predictions.
-
-Developed as part of the **CodSoft Machine Learning Internship**.
+The model analyzes the content of SMS messages and predicts whether a message is unwanted spam or a genuine message.
 
 ---
 
 ## 🎯 Objectives
 
-The primary objectives of this project are:
-
-- Build an intelligent SMS classification system.
-- Apply Natural Language Processing techniques.
-- Convert textual data into numerical features.
-- Train a Machine Learning model for binary classification.
-- Evaluate model performance using industry-standard metrics.
-- Save the trained model for future deployment.
+- Build a machine learning model for SMS classification.
+- Apply Natural Language Processing techniques to text data.
+- Convert text into numerical features using TF-IDF.
+- Train and evaluate a classification model.
+- Save the trained model for future use and deployment.
 
 ---
 
-## 🗂 Dataset Information
+## 🗂 Dataset
 
-The dataset contains SMS messages labeled as either spam or ham.
+The dataset contains SMS messages labeled as:
 
-### Features
+| Label | Description |
+|---------|-------------|
+| Ham | Legitimate SMS message |
+| Spam | Unwanted or promotional SMS message |
 
-| Column | Description |
-|----------|-------------|
-| label | SMS category (Spam/Ham) |
-| message | SMS text content |
+### Sample Messages
 
-### Example Records
+**Ham**
 
-| Label | Message |
-|---------|---------|
-| Ham | Hey, are we meeting tomorrow? |
-| Spam | Congratulations! You've won a free prize. Click now! |
+```text
+Hey, are we meeting tomorrow?
+```
+
+**Spam**
+
+```text
+Congratulations! You have won ₹10,000. Click the link now.
+```
 
 ---
 
 ## 🛠 Technologies Used
 
-### Programming Language
 - Python
-
-### Libraries
 - Pandas
 - NumPy
 - Scikit-learn
+- TF-IDF Vectorizer
 - Pickle
-
-### Machine Learning
-- Logistic Regression
-
-### NLP Techniques
-- Text Cleaning
-- TF-IDF Vectorization
+- Jupyter Notebook
 
 ---
 
-## ⚙️ Project Workflow
+## 🔄 Project Workflow
 
-### 1. Data Collection
-
-The SMS dataset is loaded and inspected for:
-
-- Missing values
-- Duplicate records
-- Class distribution
-
----
+### 1. Data Loading
+The SMS dataset is loaded and inspected for quality.
 
 ### 2. Data Preprocessing
+- Handle missing values
+- Remove duplicates
+- Encode labels
+- Prepare text data
 
-The text data undergoes preprocessing to improve model performance.
+### 3. Feature Extraction
+TF-IDF (Term Frequency-Inverse Document Frequency) is used to convert SMS text into numerical vectors.
 
-Steps include:
+### 4. Model Training
+A Logistic Regression classifier is trained on the processed data.
 
-- Removing unnecessary columns
-- Converting labels into numerical values
-- Removing duplicates
-- Cleaning text where required
+### 5. Model Evaluation
+The model is evaluated using:
+- Accuracy Score
+- Precision Score
+- Recall Score
+- F1 Score
+- Confusion Matrix
 
----
-
-### 3. Feature Engineering
-
-Machine Learning algorithms cannot directly understand text data.
-
-Therefore, messages are converted into numerical vectors using:
-
-### TF-IDF Vectorization
-
-TF-IDF (Term Frequency-Inverse Document Frequency) assigns importance scores to words based on:
-
-- Frequency within a message
-- Rarity across the dataset
-
-This helps the model focus on meaningful words.
+### 6. Model Saving
+The trained model and TF-IDF vectorizer are saved using Pickle for future predictions.
 
 ---
 
-### 4. Train-Test Split
-
-The dataset is divided into:
-
-| Dataset | Percentage |
-|----------|------------|
-| Training Data | 80% |
-| Testing Data | 20% |
-
-This ensures unbiased model evaluation.
-
----
-
-### 5. Model Training
-
-The classification model is trained using:
+## 🤖 Machine Learning Model
 
 ### Logistic Regression
 
-Why Logistic Regression?
+Logistic Regression was chosen because:
 
-✔ Fast Training
-
-✔ High Accuracy
-
-✔ Efficient for Binary Classification
-
-✔ Excellent Performance on Text Data
-
----
-
-### 6. Model Evaluation
-
-The model is evaluated using:
-
-#### Accuracy
-
-Measures overall prediction correctness.
-
-#### Precision
-
-Measures how many predicted spam messages were actually spam.
-
-#### Recall
-
-Measures how many actual spam messages were correctly detected.
-
-#### F1 Score
-
-Balances precision and recall.
-
-#### Confusion Matrix
-
-Provides detailed classification insights.
-
----
-
-### 7. Model Saving
-
-The trained model and TF-IDF vectorizer are saved using Pickle files.
-
-Generated files:
-
-```text
-spam_model.pkl
-spam_tfidf.pkl
-```
-
-These files can be reused without retraining the model.
+- Effective for binary classification
+- Fast training and prediction
+- Performs well on text classification tasks
+- Easy to deploy
 
 ---
 
@@ -190,44 +106,51 @@ CodSoft-Spam-SMS-Detection/
 ├── spam.csv
 ├── model.ipynb
 ├── spam_model.pkl
-├── spam_tfidf.pkl
-├── README.md
-├── requirements.txt
-│
-└── images/
+└── spam_tfidf.pkl
 ```
+
+### File Description
+
+#### spam.csv
+Dataset containing SMS messages and their labels.
+
+#### model.ipynb
+Jupyter Notebook containing:
+- Data preprocessing
+- TF-IDF vectorization
+- Model training
+- Model evaluation
+- Prediction examples
+
+#### spam_model.pkl
+Saved trained Logistic Regression model.
+
+#### spam_tfidf.pkl
+Saved TF-IDF vectorizer used during prediction.
 
 ---
 
-## 🚀 Installation
+## 🚀 How to Run
 
-### Clone Repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/CodSoft-Spam-SMS-Detection.git
 ```
 
-### Navigate to Project Folder
+### Navigate to the Project Directory
 
 ```bash
 cd CodSoft-Spam-SMS-Detection
 ```
 
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## ▶ Running the Project
-
-Launch Jupyter Notebook:
+### Open Jupyter Notebook
 
 ```bash
 jupyter notebook
 ```
+
+### Run
 
 Open:
 
@@ -239,46 +162,42 @@ Run all cells sequentially.
 
 ---
 
-## 🧪 Testing the Model
-
-Example:
+## 🧪 Example Prediction
 
 ```python
 msg1 = "Congratulations! You have won 10000 rupees. Click the link now."
 
 msg2 = "Hey bro, are you coming to college tomorrow?"
-
-print(predict_sms(msg1))
-print(predict_sms(msg2))
 ```
 
 ### Output
 
 ```text
 SPAM
+
 HAM
 ```
 
 ---
 
-## 📊 Machine Learning Pipeline
+## 📊 Model Pipeline
 
 ```text
-SMS Messages
-      │
-      ▼
+SMS Message
+     │
+     ▼
 Text Preprocessing
-      │
-      ▼
+     │
+     ▼
 TF-IDF Vectorization
-      │
-      ▼
+     │
+     ▼
 Logistic Regression
-      │
-      ▼
+     │
+     ▼
 Prediction
-      │
-      ▼
+     │
+     ▼
 Spam / Ham
 ```
 
@@ -286,64 +205,41 @@ Spam / Ham
 
 ## 🎓 Learning Outcomes
 
-Through this project, the following concepts were learned and implemented:
+This project helped in understanding:
 
-- Data Cleaning
-- Text Preprocessing
+- Machine Learning Fundamentals
+- Text Classification
 - Natural Language Processing
-- Feature Engineering
 - TF-IDF Vectorization
-- Machine Learning Classification
+- Logistic Regression
 - Model Evaluation
-- Model Serialization
-- Real-world Spam Detection Systems
+- Model Serialization with Pickle
 
 ---
 
 ## 🔮 Future Improvements
 
-Potential enhancements include:
-
-- Deep Learning Models (LSTM, GRU, BERT)
-- Streamlit Web Application
-- Flask API Deployment
+- Deploy using Streamlit
+- Build a Flask API
+- Use Deep Learning Models (LSTM/BERT)
 - Real-time SMS Classification
-- Multi-language Spam Detection
-- Hyperparameter Optimization
+- Multi-language Support
 
 ---
 
 ## 🎖 CodSoft Machine Learning Internship
 
-This project was completed as part of the **CodSoft Machine Learning Internship Program**.
-
-The internship focuses on developing practical Machine Learning solutions and applying AI concepts to real-world problems.
-
-Project Domain:
-- Machine Learning
-- Natural Language Processing
-- Text Classification
+This project was completed as part of the **CodSoft Machine Learning Internship Program**, focusing on practical implementation of Machine Learning techniques to solve real-world problems.
 
 ---
 
 ## 👨‍💻 Author
 
-### Maganpreet Singh
+**Maganpreet Singh**
 
-B.Tech Computer Science Student
-
-Interested in:
-- Artificial Intelligence
-- Machine Learning
-- Deep Learning
-- Data Science
-
-GitHub: https://github.com/yourusername
+B.Tech Computer Science Student  
+Machine Learning & AI Enthusiast
 
 ---
 
-## 📜 License
-
-This project is intended for educational and learning purposes under the CodSoft Machine Learning Internship Program.
-
-Feel free to fork, modify, and learn from the project.
+## ⭐ If you found this project useful, consider giving it a star!
